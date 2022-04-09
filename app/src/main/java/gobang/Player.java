@@ -1,3 +1,4 @@
+package gobang;
 public abstract class Player {
     public String name;
     public Boolean color;

@@ -1,3 +1,4 @@
+package gobang;
 public class Stone {
     public static Boolean STONE_COLOR_WHITE = true;
     public static Boolean STONE_COLOR_BLACK = false;

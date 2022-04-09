@@ -1,3 +1,4 @@
+package gobang;
 public class StoneSeq {
     public Position positionStart;
     public Position positionEnd;

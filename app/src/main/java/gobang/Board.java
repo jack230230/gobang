@@ -1,3 +1,5 @@
+package gobang;
+
 public class Board {
     public static int STONE_COUNT_MAX = 15 * 15;
     public static short STATUS_WHITE = 1;

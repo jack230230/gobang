@@ -1,3 +1,5 @@
+package gobang;
+
 import java.util.ArrayList;
 import java.util.List;
 

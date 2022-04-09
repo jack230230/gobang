@@ -1,3 +1,5 @@
+package gobang;
+
 public interface BoardStatusHandler {
     void handleVictory(boolean color);
 

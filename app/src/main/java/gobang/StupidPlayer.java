@@ -1,3 +1,4 @@
+package gobang;
 import java.util.*;
 
 public class StupidPlayer extends Player {

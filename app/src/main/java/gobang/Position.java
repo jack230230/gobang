@@ -1,3 +1,4 @@
+package gobang;
 public class Position {
     short x, y;
 
