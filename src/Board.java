@@ -12,13 +12,11 @@ public class Board {
     public static short HEIGHT = WIDTH;
     public static short WHITE_TURN = 1;
     public static short BLACK_TURN = -1;
-    // 台面状态
     // -1 black
     // 0 empty
     // 1 white
     public short[][] panelStatus;
     public int stoneCount = 0;
-    // 棋局状态
     public short status = NOT_STATED;
     public Player playerWhite;
     public Player playerBlack;
@@ -73,7 +71,7 @@ public class Board {
             }
 
             if (stoneCount == STONE_COUNT_MAX) {
-                // 棋局结束
+                // End
                 boardStatusHandler.handlePeace();
                 this.status = PEACE_END;
                 break;

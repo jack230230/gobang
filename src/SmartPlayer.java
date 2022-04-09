@@ -21,7 +21,6 @@ public class SmartPlayer extends Player {
         return panelStatus[position.x][position.y] == Board.STATUS_EMPTY;
     }
 
-    // 下棋动作，玩家根据台面情况，给出一个合法的棋子
     @Override
     public Stone action(Board board) {
 
@@ -34,7 +33,7 @@ public class SmartPlayer extends Player {
         ourChances = collectValidPositionsByColor(this.color, board.panelStatus);
         opponentChances = collectValidPositionsByColor(!this.color, board.panelStatus);
 
-        // 试算自己5连
+        // seq5
         for (Position p : ourChances) {
             short[][] trialPanelStatus = board.panelStatus;
             trialPanelStatus[p.x][p.y] = ourColorStatus;
@@ -46,7 +45,7 @@ public class SmartPlayer extends Player {
             }
         }
 
-        // 试算对手5连
+        // opponent seq5
         for (Position p : opponentChances) {
             short[][] trialPanelStatus = board.panelStatus;
             trialPanelStatus[p.x][p.y] = opponentColorStatus;
@@ -58,7 +57,7 @@ public class SmartPlayer extends Player {
             }
         }
 
-        // 试算自己活4
+        // live4
         for (Position p : ourChances) {
             short[][] trialPanelStatus = board.panelStatus;
             trialPanelStatus[p.x][p.y] = ourColorStatus;
@@ -69,7 +68,7 @@ public class SmartPlayer extends Player {
             }
         }
 
-        // 试算对手活4
+        // opponent live4
         for (Position p : opponentChances) {
             short[][] trialPanelStatus = board.panelStatus;
             trialPanelStatus[p.x][p.y] = opponentColorStatus;
@@ -80,7 +79,7 @@ public class SmartPlayer extends Player {
             }
         }
 
-        // 试算自己活3
+        // live3
         for (Position p : ourChances) {
             short[][] trialPanelStatus = board.panelStatus;
             trialPanelStatus[p.x][p.y] = ourColorStatus;
@@ -91,7 +90,7 @@ public class SmartPlayer extends Player {
             }
         }
 
-        // 试算对手活3
+        // opponent live3
         for (Position p : opponentChances) {
             short[][] trialPanelStatus = board.panelStatus;
             trialPanelStatus[p.x][p.y] = opponentColorStatus;
@@ -146,7 +145,7 @@ public class SmartPlayer extends Player {
             }
         }
 
-        // 台面上没有棋子，随机生成一个合法的位置
+        // there's no stone.
         short x = (short) (random.nextInt(Board.WIDTH - 9) + 4);
         short y = (short) (random.nextInt(Board.HEIGHT - 9) + 4);
         while (!board.checkEmpty(x, y)) {

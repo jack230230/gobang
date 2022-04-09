@@ -31,9 +31,9 @@ public class GobangFrame extends JFrame implements BoardStatusHandler {
 
         setVisible(true);
 
-        Player whitePlayer = new SmartPlayer("电脑1", Stone.STONE_COLOR_WHITE);
-        Player blackPlayer = new UserPlayer("玩家", stonePanel);
-//        Player blackPlayer = new SmartPlayer("电脑2", Stone.STONE_COLOR_BLACK);
+        Player whitePlayer = new SmartPlayer("AI1", Stone.STONE_COLOR_WHITE);
+        Player blackPlayer = new UserPlayer("Player", stonePanel);
+//        Player blackPlayer = new SmartPlayer("AI2", Stone.STONE_COLOR_BLACK);
 
         fiveStoneBoard = new Board(whitePlayer, blackPlayer, this);
         fiveStoneBoard.start();
@@ -41,8 +41,8 @@ public class GobangFrame extends JFrame implements BoardStatusHandler {
 
     @Override
     public void handleVictory(boolean color) {
-        JOptionPane.showMessageDialog(this, color ? "白色获胜!" : "黑色获胜!");
-        int value = JOptionPane.showConfirmDialog(this, "再来一局?");
+        JOptionPane.showMessageDialog(this, color ? "White win!" : "Black Win!");
+        int value = JOptionPane.showConfirmDialog(this, "Again?");
         if (value == JOptionPane.YES_OPTION) {
             fiveStoneBoard.reset();
             fiveStoneBoard.start();
@@ -53,8 +53,8 @@ public class GobangFrame extends JFrame implements BoardStatusHandler {
 
     @Override
     public void handlePeace() {
-        JOptionPane.showMessageDialog(this, "和局结束！");
-        int value = JOptionPane.showConfirmDialog(this, "再来一局?");
+        JOptionPane.showMessageDialog(this, "World Peace！");
+        int value = JOptionPane.showConfirmDialog(this, "Again?");
 
         if (value == JOptionPane.YES_OPTION) {
             fiveStoneBoard.reset();
@@ -66,7 +66,7 @@ public class GobangFrame extends JFrame implements BoardStatusHandler {
 
     @Override
     public void handleAction(Stone stone) {
-        // 绘制棋子
+        // Draw stone
         StoneJPanel panel = new StoneJPanel(stone.color ? Color.WHITE : Color.BLACK);
         panel.setBounds((stone.position.y + 1) * PANEL_CELL_SIZE - OFFSET_X, (stone.position.x + 1) * PANEL_CELL_SIZE - OFFSET_Y, 28, 28);
         stonePanel.add(panel);
@@ -134,7 +134,7 @@ class UserPlayer extends Player {
 
         do {
             position = getPosition();
-            // 空位置才能下子
+            // Only Empty position
         } while (!board.checkEmpty(position.x, position.y));
 
         Stone stone = new Stone(position, this.color);
